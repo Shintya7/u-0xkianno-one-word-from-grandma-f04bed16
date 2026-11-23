@@ -29,6 +29,12 @@ function validateWord(word: string): void {
     throw new Error("Word must not contain control characters.");
   }
 
+  // A grandma's one-word text is letters only — digits or symbols would
+  // read as a code, not a word she would actually send.
+  if (/[^A-Za-z]/.test(word)) {
+    throw new Error("Word must contain letters only.");
+  }
+
   if (word.trim().length === 0) {
     throw new Error("Word must not be only whitespace.");
   }
